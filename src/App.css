@@ -1,28 +1,122 @@
-.App {
-  text-align: center;
+.container {
+  margin: 0;  
+  padding: 0;
+  max-width: 100%;
+  min-width: 100%;
+}
+.header {
+  width: 100vw;
+  height: 60vh; 
+  background-image: url("./assets/monstera.png");
+  transition: max-height 0.5s ease-in-out, box-shadow 0.1s linear;
+  overflow: hidden;
+	position: fixed;
+	top: 0;
+	left: 0;
+  z-index: 999;
+  background-color: #394e63;
+  transition: .40s;
+}
+.medium {
+  height: 200px;
+	position: fixed;
+}
+.smaller {
+  height: 75px;
+	position: fixed;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.flex-center {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.smaller h1 {
+  bottom: -15%;
+  font-size: 30px;
+}
+.smaller p{
+  color: transparent
+}
+.medium h1 {
+  font-size: 22px;
+}
+.medium h4 {
+  font-size: 00px;
+}
+.medium p {
+  width: 20%;
+  font-size: 14px;
+  text-align: center;
+  bottom: 25%
+}
+.hexagonbig {
+  width: 320px;
+  height: 350px;
+  transition: .40s;
+  
+}
+.hexagonmedium {
+  width: 180px;
+  height: 200px;
+}
+.hexagonsmall {
+  width: 0px;
+  height: 0px;
+}
+.centered-title {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -100%);
+}
+.title {
+  font-family: 'Noto Serif', serif;
+  font-size: 200%;
+  font-weight: 400;
 }
 
+.centered-p {
+  font-family: 'Roboto';  
+  position: absolute;
+  left: 50%;  
+  transform: translate(-50%, 0%);
+}
+
+
+.centered-subtitle {
+  font-family: 'Roboto';  
+  position: absolute; 
+  left: 50%;
+  transform: translate(-50%, 150%);
+}
+.body{
+  margin-top: 68vh;
+  margin-left: 5vw;
+}
+.body h1 {
+  font-family: 'Noto Serif', serif;
+  font-size: 250%;
+  display: inline;
+}
+.body h3 {
+  display: inline;
+  margin-left: 5%;
+  font-size: 200%;
+}
+
+.body h2 {
+  font-family: 'Noto Serif', serif;
+  font-size: 150%;
+  display: inline;
+}
+
+.body p {
+  margin-right: 5%;
+  font-family: 'Roboto';
+  font-size: 130%;
+  margin: 15% 15% 0 0;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
