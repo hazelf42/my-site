@@ -1,14 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home  from './components/Home';
-import { About } from './components/About';
+import About  from './components/About';
 import { Contact } from './components/Contact';
 import { Layout } from "./components/Layout"
-
 function App() {
   return (
-    <React.Fragment>
-      <Layout>
+    <div  style={{ overflow:'auto'}}>
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
@@ -17,8 +15,7 @@ function App() {
           {/* <Route component={NoMatch} /> */}
         </Switch>
       </Router>
-      </Layout>
-    </React.Fragment>
+      </div>
   );
 }
 
