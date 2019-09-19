@@ -1,86 +1,153 @@
-
 .header {
-	width: 100vw;
-	height: 60vh;
-	background-image: url("../assets/monstera1.png");
-	transition: max-height 0.5s ease-in-out, box-shadow 0.1s linear;
-	overflow: hidden;
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 999;
-	background-color: #394e63;
-	transition: .40s;
+  width: 100vw;
+  height: 60vh;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: #394e63;
+  transition: 0.4s;
 }
+.me {
+  height: 70px;
+  widows: auto;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -100%);
+}
+.clickMe {
+  animation: MoveUpDown 2s ease-out infinite normal;
+  border-radius: 50%;
+  border: 0;
+  background-color: transparent;
+  float: right;
+  right: 3%;
+  top: 10%;
+  position: absolute;
+  /* filter: brightness(0.9); */
+  filter: drop-shadow(2px 6px 8px rgba(58, 58, 58, 0.75)); 
+  transition: 0.4s;
+  outline: 0 !important;
+  width: 75px;
+  height: 75px;
+}
+.clickMeBg {
+	top: 10%;
+	outline: 0 !important;
+	border-radius: 50%;
+	border: 0;
+	background-color: transparent;
+	float: right;
+	right: 3%;
+	position: absolute;
+	/* filter: brightness(0.9); */
+	transition: 0.4s;
+	filter: drop-shadow(2px 6px 8px rgba(58, 58, 58, 0.75)); 
+	filter: hue-rotate(90)
+  }
+.popup {
+	transition: 0.4s;
+	margin-top: -1%;
+  }
 
+@keyframes MoveUpDown {
+  from {
+	transform: translate(0,  0px); 
+  }
+  65% {
+	transform: translate(0, 3px);	
+	filter: drop-shadow(4px 8px 10px 0px rgba(44, 44, 44, 0.75));
+  }
+  to {
+	transform: translate(0,  0px); 
+	
+  }
+}
 .medium {
-	height: 200px;
-	position: fixed;
+  height: 200px;
+  position: fixed;
 }
 
 .smaller {
-	height: 75px;
-	position: fixed;
+  height: 75px;
+  position: fixed;
 }
+.smaller .clickMe{
+	height: 55px;
+	width: 55px;
+	  transition: 0.4s;
 
-
+}
 .smaller h1 {
-	bottom: -15%;
-	font-size: 30px;
-	background-color: white;
+  bottom: 10;
+  font-size: 30px;
+  background-color: white;
 }
 
 .smaller p {
-	color: transparent
+  color: transparent;
 }
-
+.smaller .me {
+  width: 0px;
+}
+.medium .me {
+  transform: translate(-50%, -60%);
+  width: 50px;
+  height: auto;
+}
 .medium h1 {
-	font-size: 22px;
+  font-size: 22px;
+  transform: translate(-50%, 80%);
 }
-
 .medium h4 {
-	font-size: 00px;
+  font-size: 00px;
 }
 
 .medium p {
-	width: 20%;
-	font-size: 14px;
-	text-align: center;
-	bottom: 25%
+  width: 20%;
+  font-size: 0px;
+  text-align: center;
+  bottom: 25%;
 }
 
 .hexagonbig {
-	width: 320px;
-	height: 350px;
-	transition: .40s;
+  width: 320px;
+  height: 350px;
+  transition: 0.4s;
 }
 
 .hexagonmedium {
-	width: 180px;
-	height: 200px;
+  width: 180px;
+  height: 200px;
 }
 
 .hexagonsmall {
-	width: 0px;
-	height: 0px;
+  width: 0px;
+  height: 0px;
 }
 
 .centered-title {
-	position: absolute;
-	left: 50%;
-	transform: translate(-50%, -100%);
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 50%);
 }
 
 .centered-p {
-	font-family: 'Roboto';
-	position: absolute;
-	left: 50%;
-	transform: translate(-50%, 0%);
+  font-family: "Roboto";
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .centered-subtitle {
-	font-family: 'Roboto';
-	position: absolute;
-	left: 50%;
-	transform: translate(-50%, 150%);
+  font-family: "Roboto";
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 250%);
+}
+
+.card p {
+  text-align: left
 }
