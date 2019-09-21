@@ -106,3 +106,16 @@ p {
     font-size: 90%;
     text-align: center;
 }
+.contactButton {
+    z-index: 100;
+    position: fixed;
+    color: white;
+    float: left;
+    bottom: 10%;
+    left: 3%;
+    height: 75px;
+    padding: 0 0 5px 0;
+    width: 75px;
+    border: none;
+    border-radius: 50%;
+}

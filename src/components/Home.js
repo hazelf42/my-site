@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "../App.css";
 import "./Header.css";
 import Hexagon from "../assets/fuck me up.png";
 import {
-  FaFacebookSquare,
-  FaLinkedin,
   FaSketch,
   FaWindowRestore,
-  FaDatabase
+  FaDatabase,
 } from "react-icons/fa/";
-import { DiSwift } from "react-icons/di";
+import { DiSwift, DiReact, DiPython } from "react-icons/di";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
@@ -19,9 +17,9 @@ import Me from "../assets/cry.png";
 import Popup from "reactjs-popup";
 import Contact from "./Contact";
 import Hello from "../assets/hello.png";
-import blue from "../assets/yellow.png";
+import blue from "../assets/blue.png";
 import green from "../assets/green.png";
-import yellow from "../assets/blue.png";
+import yellow from "../assets/yellow.png";
 import Color from "color";
 import Edibly from "../assets/edibly.png";
 import Dj from "../assets/dj.png";
@@ -29,7 +27,8 @@ import DateNight from "../assets/cooldatenight.png";
 import Calculator from "../assets/calc1.png";
 import PetHp from "../assets/peth.png";
 import Scraper from "../assets/scraper.png";
-import ReactTooltip from "react-tooltip";
+import { Textfit } from 'react-textfit';
+
 
 function resizeHeaderOnScroll() {
   const distanceY = window.pageYOffset || document.documentElement.scrollTop,
@@ -69,7 +68,7 @@ function Header(props) {
       className="header flex-center"
       id="header"
     >
-      {props.onPress}
+      {props.remixButton}
       <img
         src={Hexagon}
         className="hexagonbig flex-center"
@@ -77,24 +76,23 @@ function Header(props) {
         id="hexagon"
       />
       <img className="me" src={Me} alt="me" />
-      <p className="centered-p">Hi, I'm </p>
-      <h1 className="centered-title title" id="title">
-        Hazel Foerstner
-      </h1>
-      <h4 className="centered-subtitle">
-        <FaFacebookSquare />
-        <FaLinkedin />
-      </h4>
+      <p className="centered-p"><i>Hi, I'm </i></p>
+      {/* <ScaleText > */}
+      <Textfit className="centered-title" mode="single">
+      <h1 >Hazel Foerstner</h1>
+      </Textfit>
+      {/* </ScaleText> */}
+      <h6 className="centered-subtitle">
+        Here's a tagline.
+      </h6>
     </div>
   );
 }
 function About(props) {
   return (
     <div className="about flex-center">
-      <Row style={{ width: "80VW"  
-    ,display: "flex",
-    flexWrap: "wrap"}}>
-        <Col xs={4}>
+      <Row style={{ width: "80VW", display: "flex", flexWrap: "wrap" }}>
+        <Col sm={4} xs={12}>
           <div
             className="card flex-center"
             style={{ backgroundColor: props.color + "30" }}
@@ -104,13 +102,14 @@ function About(props) {
               style={{ padding: "5%", color: Color(props.color).darken(0.7) }}
             />
             <h2> Design</h2>
-            <p style={{textAlign:'center'}}> 
-              Using AdobeXd, I'll create a UI prototype of your app, so that you can make sure your app is exactly as beautiful and intuitive as you'd pictured it,
-              before I write one line of code. 
+            <p style={{ textAlign: "center" }}>
+              Using AdobeXd, I'll create a UI prototype of your app, so that you
+              can make sure your app is exactly as beautiful and intuitive as
+              you'd pictured it, before I write one line of code.
             </p>
           </div>
         </Col>
-        <Col xs={4}>
+        <Col sm={4} xs={12}>
           <div
             className="card flex-center"
             style={{ backgroundColor: props.color + "30" }}
@@ -120,14 +119,14 @@ function About(props) {
               style={{ color: Color(props.color).darken(0.7) }}
             />
             <h2> Development</h2>
-            <p style={{textAlign:'center'}}> 
-              Cross-platform or native, let's make your app simple, responsive, and future-proofed with modern and 
-              readable code. <br />
+            <p style={{ textAlign: "center" }}>
+              Cross-platform or native, let's make your app simple, responsive,
+              and future-proofed with modern and readable code. <br />
             </p>
-            <p style={{color:"transparent"}}> </p>
+            <p style={{ color: "transparent" }}> </p>
           </div>
         </Col>
-        <Col xs={4}>
+        <Col sm={4} xs={12}>
           <div
             className="card flex-center"
             style={{ backgroundColor: props.color + "30" }}
@@ -137,9 +136,10 @@ function About(props) {
               style={{ color: Color(props.color).darken(0.7) }}
             />
             <h2> Database</h2>
-            <p style={{textAlign:'center'}}> 
-            Whether you need a custom backend for easy querying, or want to take advantage of the latest cloud databases, 
-            we'll ensure seamless integration of your data with the frontend.
+            <p style={{ textAlign: "center" }}>
+              Whether you need a custom backend for easy querying, or want to
+              take advantage of the latest cloud databases, we'll ensure
+              seamless integration of your data with the frontend.
             </p>
           </div>
         </Col>
@@ -147,37 +147,12 @@ function About(props) {
     </div>
   );
 }
-const overlay = <div>Hello</div>;
-const projImages = [
-  {
-    src: Calculator,
-    thumbnail: Calculator,
-    width: "300px",
-    height: "300px",
-    customOverlay: overlay,
-    caption: "a"
-  },
-  {
-    src: PetHp,
-
-    width: "300px",
-    height: "300px",
-    thumbnail: PetHp,
-    caption: "Boats (Jeshu John - designerspics.com)"
-  },
-
-  {
-    src: Scraper,
-
-    width: "300px",
-    height: "300px",
-    thumbnail: Scraper
-  }
-];
-
 export default function Home() {
-  //Hooks 4 ~style~
+  //Hooks stuff
   const [style, setStyle] = useState("green");
+  const [isShowing, setIsShowing] = useState(false);
+  const [clicked, setClicked] = useState(false);
+
   const styles = {
     green: {
       backgroundImage: green,
@@ -185,42 +160,98 @@ export default function Home() {
     },
     blue: {
       backgroundImage: blue,
-      color: "#F4DA4A"
+      color: "#83B8BE"
     },
     yellow: {
       backgroundImage: yellow,
-      color: "#83B8BE"
+      color: "#F4DA4A"
     }
   };
+  const timeout = useRef(null); // to store a handle to timeout so that it can be cleared
 
-  const TriggerButton = (
+  // Timer stuff
+  const timeRemixButton = () => {
+    console.log("Timing");
+    timeout.current = setTimeout(() => setIsShowing(true), 15000); // schedule to hide tooltip
+  };
+
+  const ContactButton = (
     <button
-      style={{
-        position: "fixed",
-        backgroundColor: styles[style]["color"], //////////
-        color: "white",
-        float: "left",
-        bottom: "10%",
-        left: "3%",
-        height: "75px",
-        padding: "0 0 5px 0",
-        width: "75px",
-        border: "none",
-        borderRadius: "50%",
-        fontSize: "px",
-        fontWeight: 600
-      }}
+      className="contactButton"
+      style={{ backgroundColor: styles[style]["color"] }}
     >
       <img src={Hello} alt="Say hi!" style={{ height: "40px" }} />
     </button>
   );
   function popUp() {
-    var popup = document.getElementById("popup");
-    popup.classList.add("popup");
+    var remixButton = document.getElementById("remixbg");
+    remixButton.classList.add("popup");
   }
   function popDown() {
-    var popup = document.getElementById("popup");
-    popup.classList.remove("popup");
+    var remixButton = document.getElementById("remixbg");
+    remixButton.classList.remove("popup");
+  }
+  function Portfolio() {
+    return (
+      <React.Fragment>
+        <h1 className="title">Portfolio</h1>
+        <div className="divider" style={{ backgroundColor: styles[style]['color'] }} />
+        <br />
+        <body>
+          <Row>
+          <Col md={2} xs={4}>
+              <h3 className="subtitle">Production-Ready Mobile Apps</h3>
+            </Col>
+            <Col xs={10}>
+              <div className="hovercontainer">
+                <img
+                  src={DateNight}
+                  alt="Cool Date Night"
+                  className="banner flex-center img"
+                />
+                <div class="middle">
+                  {" "}
+                  <div class="text">
+                    <img
+                      src={Flutter}
+                      alt="Flutter"
+                      style={{ height: "20px", width: "auto" }}
+                    />
+                    Cool Date Night
+                  </div>
+                </div>
+              </div>
+              <div className="hovercontainer">
+                <img
+                  src={Edibly}
+                  alt="Edibly"
+                  className="banner flex-center img"
+                />
+                <div class="middle">
+                  <div class="text">
+                    <img
+                      src={Flutter}
+                      alt="Flutter"
+                      style={{ height: "20px", width: "auto" }}
+                    />
+                    <DiSwift style={{ height: "30px", width: "auto" }} />
+                    Edibly
+                  </div>
+                </div>
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={2} xs={4}>
+              <h3 className="subtitle">Other Projects</h3>
+            </Col>
+            <Col xs={10}>
+              <Gallery />
+            </Col>
+          </Row>
+        </body>
+      </React.Fragment>
+    );
   }
   function Gallery() {
     let imageList = [Calculator, PetHp, Scraper];
@@ -229,121 +260,103 @@ export default function Home() {
       "A fun, hooks-based React app using gaming website Polygon's algorithm to calculate the HP (hitpoints) of your pet.",
       "An application that can be easily adapted to scrape the menus of any Javascript-based restaurant app, then intelligently filter for vegan and vegetarian dishes."
     ];
+    let icons = [<DiReact style={{fontSize:"21px"}} />, <DiReact style={{fontSize:"21px"}} />, <DiPython />]
     return (
-      <div style={{ display: "inline" }}>
+      <Row>
         {imageList.map(image => {
           return (
-            <div className="hovercontainer" style={{ display: "inline" }}>
+            <Col md={4} xs={12}>
+            <div className="hovercontainer" style={{height: "30VW"}}>
               <img
                 src={image}
                 alt="Testing"
                 style={{
                   display: "inline",
-                  width: "25VW",
-                  height: "20VW",
-                  padding: "1%",
-                  objectFit: "cover"
-                }}/>
-              <div class="middle" style={{
-                  width: "25VW",
-                  height: "20VW",
+                  objectFit: "cover",
+                  height: "100%",
+                  maxWidth: '120%',
+                }}
+              />
+              <div
+                class="middle"
+                style={{ 
                   top: 0,
-                  left: 0,
-                  }}>
-                {" "}
-                <div class="text">{text[imageList.indexOf(image)]}</div>
+                  left: 0
+                }}
+              >
+                <div class="text">{icons[imageList.indexOf(image)]} {text[imageList.indexOf(image)]}</div>
               </div>
             </div>
+            </Col>
           );
         })}
-      </div>
+      </Row>
     );
+  }
+  if (!clicked && !isShowing) {
+    timeRemixButton();
   }
   return (
     <Container style={{ maxWidth: "100VW" }}>
       <Header
         imageUrl={styles[style]["backgroundImage"]}
-        onPress={
-          <button
-            id="popup"
-            onMouseOver={() => popUp()}
-            onMouseOut={() => popDown()}
-            className="clickMeBg"
-            onClick={() => {
-              if (style === "green") {
-                setStyle("blue");
-              } else if (style === "blue") {
-                setStyle("yellow");
-              } else if (style === "yellow") {
-                setStyle("green");
-              }
-            }}
-          >
-            {" "}
-            <img src={Dj} alt="Remix" className="clickMe" />{" "}
-          </button>
+        remixButton={
+          <React.Fragment>
+            <button
+              id="remixbg"
+              data-tip
+              data-for="remixTooltip"
+              onMouseOver={() => popUp()}
+              onMouseOut={() => popDown()}
+              className="remixBg"
+              onClick={() => {
+                setClicked(true);
+                if (style === "green") {
+                  setStyle("blue");
+                } else if (style === "blue") {
+                  setStyle("yellow");
+                } else if (style === "yellow") {
+                  setStyle("green");
+                }
+              }}
+            >
+              {!clicked && isShowing && 
+              <span
+                className="remixtooltip">
+                  <p>Try me!</p>  
+              </span> }
+              <img src={Dj} alt="Remix" className="remix" />{" "}
+            </button>
+          </React.Fragment>
         }
       />
       <About color={styles[style]["color"]} />
-      <Popup trigger={TriggerButton} modal closeOnDocumentClick>
+      <Popup trigger={ContactButton} modal closeOnDocumentClick>
         <Contact />
       </Popup>
-      <h1 className="title">Portfolio</h1>
-      <div className="divider" style={{ backgroundColor: "red" }} />
+      <Portfolio />
       <br />
-      <body>
-        <Row>
-          <Col xs={2}>
-            <h3 className="subtitle">Production-Ready Mobile Apps</h3>
-          </Col>
-          <Col xs={10}>
-            <div className="hovercontainer">
-              <img
-                src={DateNight}
-                alt="Cool Date Night"
-                className="banner flex-center img"
-              />
-              <div class="middle">
-                {" "}
-                <div class="text">
-                  <img
-                    src={Flutter}
-                    alt="Flutter"
-                    style={{ height: "20px", width: "auto" }}
-                  />
-                  Cool Date Night
-                </div>
-              </div>
-            </div>
-            <div className="hovercontainer">
-              <img
-                src={Edibly}
-                alt="Edibly"
-                className="banner flex-center img"
-              />
-              <div class="middle">
-                <div class="text">
-                  <img
-                    src={Flutter}
-                    alt="Flutter"
-                    style={{ height: "20px", width: "auto" }}
-                  />
-                  <DiSwift style={{ height: "30px", width: "auto" }} />
-                  Edibly
-                </div>
-              </div>
-            </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={2}>
-            <h3 className="subtitle">Web Projects</h3>
-          </Col>
-          <Col xs={10}>
-            <Gallery />
-          </Col>
-        </Row>
-      </body>
+      <div className="flex-center">
+        <button
+          style={{
+            width: "30VW",
+            height: '5VW',
+            backgroundColor: styles[style]["color"]+'CC' ,
+            color:  "white",
+            border:
+              style === "yellow" ? "2px solid" + styles[style]["color"] : "none",
+              boxShadow:" 2px 4px 5px 0px rgba(156, 156, 156, 0.75)",
+          }}
+        ><b>
+          Let's chat!</b>   
+        </button>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+      </div>
     </Container>
   );
 }

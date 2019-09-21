@@ -17,7 +17,7 @@
   left: 50%;
   transform: translate(-50%, -100%);
 }
-.clickMe {
+.remix {
   animation: MoveUpDown 2s ease-out infinite normal;
   border-radius: 50%;
   border: 0;
@@ -26,43 +26,99 @@
   right: 3%;
   top: 10%;
   position: absolute;
-  /* filter: brightness(0.9); */
-  filter: drop-shadow(2px 6px 8px rgba(58, 58, 58, 0.75)); 
+  filter: drop-shadow(2px 6px 8px rgba(58, 58, 58, 0.75));
   transition: 0.4s;
   outline: 0 !important;
   width: 75px;
   height: 75px;
 }
-.clickMeBg {
-	top: 10%;
-	outline: 0 !important;
-	border-radius: 50%;
-	border: 0;
-	background-color: transparent;
-	float: right;
-	right: 3%;
-	position: absolute;
-	/* filter: brightness(0.9); */
-	transition: 0.4s;
-	filter: drop-shadow(2px 6px 8px rgba(58, 58, 58, 0.75)); 
-	filter: hue-rotate(90)
-  }
+.remixBg {
+  top: 10%;
+  outline: 0 !important;
+  border-radius: 50%;
+  border: 0;
+  background-color: transparent;
+  float: right;
+  right: 3%;
+  position: absolute;
+  /* filter: brightness(0.9); */
+  transition: 0.4s;
+  filter: drop-shadow(2px 6px 8px rgba(58, 58, 58, 0.75));
+}
+
+.remixtooltip {
+  background: #ffffff;
+  font-family: "Roboto";
+  text-align: center;     
+  margin: 37px 100px;
+  padding: 5px;
+  display: block;
+  background-color: rgba(255, 255, 255, 0.767);
+  height: 30px;
+  border-radius: 5px 0 0 5px;
+  animation: fadein 0.5s;
+  width: 75px
+}
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.remixtooltip::after {
+  top: 53px;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-width: 15px;
+  border-color: rgba(255, 255, 255, 0);
+  border-left-color: rgba(255, 255, 255, 0.767);
+  border-radius: 0 5px 5px 0;
+  margin-top: -15px;
+  margin-left: 37.5px;
+}
+
+.smaller .remixtooltip {
+  padding: 5px;
+  margin: 20px 75px;
+  background: #ffffff;
+  display: block;
+  background-color: rgba(255, 255, 255, 0.767);
+  height: 30px;
+  border-radius: 5px 0 0 5px;
+}
+.smaller .remixtooltip::after {
+  top: 36px;
+  border: solid transparent;
+  content: " ";
+  height: 0;  
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-width: 15px;
+  border-color: rgba(255, 255, 255, 0);
+  border-left-color: rgba(255, 255, 255, 0.767);
+  border-radius: 0 5px 5px 0;
+  margin-top: -15px;
+  margin-left: 37.5px;
+}
 .popup {
-	transition: 0.4s;
-	margin-top: -1%;
-  }
+  transition: 0.4s;
+  margin-top: -1%;
+}
 
 @keyframes MoveUpDown {
   from {
-	transform: translate(0,  0px); 
+    transform: translate(0, 0px);
   }
   65% {
-	transform: translate(0, 3px);	
-	filter: drop-shadow(4px 8px 10px 0px rgba(44, 44, 44, 0.75));
+    transform: translate(0, 3px);
+    filter: drop-shadow(4px 8px 10px 0px rgba(44, 44, 44, 0.75));
   }
   to {
-	transform: translate(0,  0px); 
-	
+    transform: translate(0, 0px);
   }
 }
 .medium {
@@ -74,14 +130,13 @@
   height: 75px;
   position: fixed;
 }
-.smaller .clickMe{
-	height: 55px;
-	width: 55px;
-	  transition: 0.4s;
-
+.smaller .remix {
+  height: 55px;
+  width: 55px;
+  transition: 0.4s;
 }
 .smaller h1 {
-  bottom: 10;
+  bottom: 40%;
   font-size: 30px;
   background-color: white;
 }
@@ -131,23 +186,43 @@
 .centered-title {
   position: absolute;
   left: 50%;
+  font-family: "Domine", serif;
   transform: translate(-50%, 50%);
 }
+.smaller .centered-title {
+  position: absolute;
+  left: 50%;
+  font-family: "Domine", serif;
+  transform: translate(-50%, 0%);
+}
+.medium .centered-title {
+  position: absolute;
+  left: 50%;
+  font-family: "Domine", serif;
+  transform: translate(0, 0%);
+}
 
+.medium .centered-subtitle {
+  position: absolute;
+  left: 50%;
+  font-family: "Domine", serif;
+  transform: translate(-50%, 225%);
+}
 .centered-p {
   font-family: "Roboto";
   position: absolute;
+  font-size: 14px;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 .centered-subtitle {
-  font-family: "Roboto";
+  font-family: "Domine", serif;
   position: absolute;
   left: 50%;
-  transform: translate(-50%, 250%);
+  transform: translate(-50%, 350%);
 }
 
 .card p {
-  text-align: left
+  text-align: left;
 }
