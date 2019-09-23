@@ -83,7 +83,7 @@ function Header(props) {
       </Textfit>
       {/* </ScaleText> */}
       <h6 className="centered-subtitle">
-        Here's a tagline.
+        
       </h6>
     </div>
   );
@@ -323,7 +323,7 @@ export default function Home() {
               {!clicked && isShowing && 
               <span
                 className="remixtooltip">
-                  <p>Try me!</p>  
+                  <h6>Try me!</h6>  
               </span> }
               <img src={Dj} alt="Remix" className="remix" />{" "}
             </button>
@@ -332,7 +332,7 @@ export default function Home() {
       />
       <About color={styles[style]["color"]} />
       <Popup trigger={ContactButton} modal closeOnDocumentClick>
-        <Contact />
+        <Contact color ={styles[style]['color']}/>
       </Popup>
       <Portfolio />
       <br />
@@ -355,7 +355,6 @@ export default function Home() {
         <br />
         <br />
         <br />
-
       </div>
     </Container>
   );
