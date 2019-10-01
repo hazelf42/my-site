@@ -13,7 +13,7 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import "react-bootstrap";
 import Flutter from "../assets/flutter.png";
-import Me from "../assets/cry.png";
+import Me from "../assets/cry.jpg";
 import Popup from "reactjs-popup";
 import Contact from "./Contact";
 import Hello from "../assets/hello.png";
