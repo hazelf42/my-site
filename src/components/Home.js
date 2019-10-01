@@ -83,7 +83,6 @@ function Header(props) {
       </Textfit>
       {/* </ScaleText> */}
       <h6 className="centered-subtitle">
-        
       </h6>
     </div>
   );
@@ -103,9 +102,11 @@ function About(props) {
             />
             <h2> Design</h2>
             <p style={{ textAlign: "center" }}>
-              Using AdobeXd, I'll create a UI prototype of your app, so that you
+              I use AdobeXd to create UI prototypes of web and mobile apps, so you can make sure
+              your app is exactly as beautiful as you pictured it, before I write one line of code.
+              {/* Using AdobeXd, I'll create a UI prototype of your app, so that you
               can make sure your app is exactly as beautiful and intuitive as
-              you'd pictured it, before I write one line of code.
+              you'd pictured it, before I write one line of code. */}
             </p>
           </div>
         </Col>
@@ -138,8 +139,8 @@ function About(props) {
             <h2> Database</h2>
             <p style={{ textAlign: "center" }}>
               Whether you need a custom backend for easy querying, or want to
-              take advantage of the latest cloud databases, we'll ensure
-              seamless integration of your data with the frontend.
+              take advantage of the latest cloud databases, I will ensure
+              seamless integration of your data.
             </p>
           </div>
         </Col>
