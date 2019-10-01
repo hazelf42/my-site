@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import '../App.css';
 const Contact = props => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -16,42 +16,45 @@ const Contact = props => {
   }
 
   return (
-    <React.Fragment>
+    <div style={{padding: "10px", border: "3px solid " + props.color}}>
       {" "}
-      <h1>(✿◉‿◉)🗡 J O B ? ? </h1>
-      <form>
+      <h1 className='title'>Hello! <span role="img" aria-label="Wave">👋</span></h1>
+      <form className = "contactform" data-netlify="true" method="POST">
         <label>
-          Name
+          Name<br/>
           <input
             type="text"
             name={"Name"}
-            style={{ width: "100px" }}
+            style={{ width: "40VW" }}
             onChange={handleChange}
             value={name}
           />
         </label>
+        <br />
         <label>
-          Email
+          Email <br/>
           <input
             type="text"
             name={"Email"}
-            style={{ width: "100px" }}
+            style={{ width: "40VW" }}
             onChange={handleChange}
             value={email}
           />
         </label>
+        <br />
         <label>
-          Message
+          Message<br/>
           <input
             type="text"
             name={"Message"}
-            style={{ width: "100px" }}
+            style={{ width: "40VW", height: "30VW" }}
             onChange={handleChange}
             value={message}
           />
-        </label>
-      </form>{" "}
-    </React.Fragment>
+        </label> <br />
+        <input type="submit" value="Send"/>
+      </form>
+    </div>
   );
 };
 export default Contact;
