@@ -172,7 +172,7 @@ export default function Home() {
 
   // Timer stuff
   const timeRemixButton = () => {
-    console.log("Timing");
+    console.log("🔎 thanks for inspecting 🕵️");
     timeout.current = setTimeout(() => setIsShowing(true), 15000); // schedule to hide tooltip
   };
 
