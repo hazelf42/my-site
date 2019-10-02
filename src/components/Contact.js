@@ -26,7 +26,6 @@ const Contact = props => {
             type="text"
             name="Name"
             style={{ width: "40VW" }}
-            value={name}
           />
         </label>
         <br />
@@ -36,7 +35,6 @@ const Contact = props => {
             type="text"
             name="Email"
             style={{ width: "40VW" }}
-            value={email}
           />
         </label>
         <br />
@@ -46,7 +44,6 @@ const Contact = props => {
             type="text"
             name="Message"
             style={{ width: "40VW", height: "30VW" }}
-            value={message}
           />
         </label> <br />
         <input type="submit" value="Send"/>
