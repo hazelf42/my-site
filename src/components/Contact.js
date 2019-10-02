@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
-import NetlifyForm from "react-netlify-form";
+import React, { useState} from "react";
 
 import "../App.css";
 const Contact = props => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [error, setError] = useState(null)
+  const [success, setSuccess] = useState(null)
 
   function handleChange(e) {
     if (e.target.name === "Name") {
@@ -27,8 +28,8 @@ const Contact = props => {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "contact", ...this.state })
     })
-      .then(() => alert("Success!"))
-      .catch(error => alert(error));
+      .then(() => setSuccess(true))
+      .catch(setError(true));
 
     e.preventDefault();
   }
@@ -42,16 +43,14 @@ const Contact = props => {
         </span>
       </h1>
     <form onSubmit={handleSubmit} name="Contact" className="contactform">
-      {/* {({ loading, error, success }) => (
         <div>
-          {loading && <div>...</div>}
           {error && (
             <div>
               Your information was not sent. Please try again later. {error}
             </div>
           )}
-          {success && <div>Success!</div>}
-          {!loading && !success && ( */}
+          {success && <div>Success! </div>}
+           { !success && (
             <div>
               <label>
                 Name
@@ -86,10 +85,9 @@ const Contact = props => {
               </label>{" "}
               <br />
               <button type="submit">Send</button>
-            </div>
-          )}
-        {/* </div> */}
-      {/* )} */}
+            </div>)}
+        </div>
+      )}
     </form>
     </div>
   );
