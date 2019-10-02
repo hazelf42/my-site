@@ -19,14 +19,13 @@ const Contact = props => {
     <div style={{padding: "10px", border: "3px solid " + props.color}}>
       {" "}
       <h1 className='title'>Hello! <span role="img" aria-label="Wave">👋</span></h1>
-      <form className = "contactform" data-netlify="true" method="POST" netlify>
+      <form className = "contactform" data-netlify="true" method="POST">
         <label>
           Name<br/>
           <input
             type="text"
             name="Name"
             style={{ width: "40VW" }}
-            onChange={handleChange}
             value={name}
           />
         </label>
@@ -37,7 +36,6 @@ const Contact = props => {
             type="text"
             name="Email"
             style={{ width: "40VW" }}
-            onChange={handleChange}
             value={email}
           />
         </label>
@@ -48,7 +46,6 @@ const Contact = props => {
             type="text"
             name="Message"
             style={{ width: "40VW", height: "30VW" }}
-            onChange={handleChange}
             value={message}
           />
         </label> <br />
