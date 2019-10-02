@@ -17,7 +17,11 @@ const Contact = ({ closeWindow }, props) => {
       setMessage(e.target.value);
     }
   }
+  function checkValid(){
+    //do later
+  }
   const encode = data => {
+    checkValid();
     return Object.keys(data)
       .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
       .join("&");
