@@ -16,11 +16,11 @@ const Contact = props => {
       setMessage(e.target.value);
     }
   }
-  const encode = (data) => {
+  const encode = data => {
     return Object.keys(data)
-        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-        .join("&");
-  }
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+  };
   function handleSubmit(e) {
     fetch("/", {
       method: "POST",
@@ -31,8 +31,7 @@ const Contact = props => {
       .catch(error => alert(error));
 
     e.preventDefault();
-  };
-
+  }
 
   return (
     // <div style={{ padding: "10px", border: "3px solid " + props.color }}>
@@ -42,46 +41,56 @@ const Contact = props => {
     //       👋
     //     </span>
     //   </h1>
-    <form onSubmit={handleSubmit}
-    name="Contact"
-        className="contactform">
-        {({ loading, error, success }) => (
-          <div>
-            {loading && <div>...</div>}
-            {error && (
-              <div>Your information was not sent. Please try again later. {error}</div>
-            )}
-            {success && <div>Success!</div>}
-            {!loading && !success && (
-              <div>
-                <label>
-                  Name
-                  <br />
-                  <input type="text" name="Name" style={{ width: "40VW" }} onChange={handleChange}/>
-                </label>
+    <form onSubmit={handleSubmit} name="Contact" className="contactform">
+      {/* {({ loading, error, success }) => (
+        <div>
+          {loading && <div>...</div>}
+          {error && (
+            <div>
+              Your information was not sent. Please try again later. {error}
+            </div>
+          )}
+          {success && <div>Success!</div>}
+          {!loading && !success && ( */}
+            <div>
+              <label>
+                Name
                 <br />
-                <label>
-                  Email <br />
-                  <input type="text" name="Email" style={{ width: "40VW" }} onChange={handleChange} />
-                </label>
+                <input
+                  type="text"
+                  name="Name"
+                  style={{ width: "40VW" }}
+                  onChange={handleChange}
+                />
+              </label>
+              <br />
+              <label>
+                Email <br />
+                <input
+                  type="text"
+                  name="Email"
+                  style={{ width: "40VW" }}
+                  onChange={handleChange}
+                />
+              </label>
+              <br />
+              <label>
+                Message
                 <br />
-                <label>
-                  Message
-                  <br />
-                  <input
-                    type="text"
-                    name="Message"
-                    style={{ width: "40VW", height: "30VW" }}
-                    onChange={handleChange}
-                  />
-                </label>{" "}
-                <br />
-                <button type="submit">Send</button>
-              </div>
-            )}
-          </div>
-        )}
-      </form>
+                <input
+                  type="text"
+                  name="Message"
+                  style={{ width: "40VW", height: "30VW" }}
+                  onChange={handleChange}
+                />
+              </label>{" "}
+              <br />
+              <button type="submit">Send</button>
+            </div>
+          )}
+        {/* </div> */}
+      {/* )} */}
+    </form>
     // </div>
   );
 };
