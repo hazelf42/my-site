@@ -16,6 +16,23 @@ const Contact = props => {
       setMessage(e.target.value);
     }
   }
+  const encode = (data) => {
+    return Object.keys(data)
+        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+        .join("&");
+  }
+  function handleSubmit(e) {
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", ...this.state })
+    })
+      .then(() => alert("Success!"))
+      .catch(error => alert(error));
+
+    e.preventDefault();
+  };
+
 
   return (
     // <div style={{ padding: "10px", border: "3px solid " + props.color }}>
@@ -25,8 +42,8 @@ const Contact = props => {
     //       👋
     //     </span>
     //   </h1>
-      <NetlifyForm
-        name="Contact"
+    <form onSubmit={handleSubmit}
+    name="Contact"
         className="contactform">
         {({ loading, error, success }) => (
           <div>
@@ -40,12 +57,12 @@ const Contact = props => {
                 <label>
                   Name
                   <br />
-                  <input type="text" name="Name" style={{ width: "40VW" }} />
+                  <input type="text" name="Name" style={{ width: "40VW" }} onChange={handleChange}/>
                 </label>
                 <br />
                 <label>
                   Email <br />
-                  <input type="text" name="Email" style={{ width: "40VW" }} />
+                  <input type="text" name="Email" style={{ width: "40VW" }} onChange={handleChange} />
                 </label>
                 <br />
                 <label>
@@ -55,15 +72,16 @@ const Contact = props => {
                     type="text"
                     name="Message"
                     style={{ width: "40VW", height: "30VW" }}
+                    onChange={handleChange}
                   />
                 </label>{" "}
                 <br />
-                <button>Send</button>
+                <button type="submit">Send</button>
               </div>
             )}
           </div>
         )}
-      </NetlifyForm>
+      </form>
     // </div>
   );
 };
