@@ -18,14 +18,14 @@ const Contact = props => {
   }
 
   return (
-    <div style={{ padding: "10px", border: "3px solid " + props.color }}>
-      <h1 className="title">
-        Hello!{" "}
-        <span role="img" aria-label="Wave">
-          👋
-        </span>
-      </h1>
-      {/* <NetlifyForm
+    // <div style={{ padding: "10px", border: "3px solid " + props.color }}>
+    //   <h1 className="title">
+    //     Hello!{" "}
+    //     <span role="img" aria-label="Wave">
+    //       👋
+    //     </span>
+    //   </h1>
+      <NetlifyForm
         name="Contact"
         className="contactform">
         {({ loading, error, success }) => (
@@ -63,30 +63,8 @@ const Contact = props => {
             )}
           </div>
         )}
-      </NetlifyForm> */}
-      <NetlifyForm name='Contact Form'>
-  {({ loading, error, success }) => (
-    <div>
-      {loading &&
-        <div>Loading...</div>
-      }
-      {error &&
-        <div>Your information was not sent. Please try again later.</div>
-      }
-      {success &&
-        <div>Thank you for contacting us!</div>
-      }
-      {!loading && !success &&
-        <div>
-          <input type='text' name='Name' required />
-          <textarea name='Message' required />
-          <button>Submit</button>
-        </div>
-      }
-    </div>
-  )}
-</NetlifyForm>
-    </div>
+      </NetlifyForm>
+    // </div>
   );
 };
 export default Contact;
