@@ -1,12 +1,12 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 
 import "../App.css";
 const Contact = props => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [error, setError] = useState(null)
-  const [success, setSuccess] = useState(null)
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
 
   function handleChange(e) {
     if (e.target.name === "Name") {
@@ -29,7 +29,7 @@ const Contact = props => {
       body: encode({ "form-name": "contact", name, email, message })
     })
       .then(() => setSuccess(true))
-      .catch(setError(true));
+      .catch(setError(true), console.log(error));
 
     e.preventDefault();
   }
@@ -42,15 +42,19 @@ const Contact = props => {
           👋
         </span>
       </h1>
-    <form onSubmit={handleSubmit} name="Contact" className="contactform" netlify>
+      <form
+        onSubmit={handleSubmit}
+        name="Contact"
+        className="contactform"
+        netlify
+      >
         <div>
           {error && (
             <div>
               Your information was not sent. Please try again later. {error}
             </div>
           )}
-          {success && <div>Success! </div>}
-           { !success && (
+          {!success && (
             <div>
               <label>
                 Name
@@ -85,9 +89,10 @@ const Contact = props => {
               </label>{" "}
               <br />
               <button type="submit">Send</button>
-            </div>)}
+            </div>
+          )}
         </div>
-    </form>
+      </form>
     </div>
   );
 };
