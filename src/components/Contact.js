@@ -26,7 +26,7 @@ const Contact = props => {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact", ...this.state })
+      body: encode({ "form-name": "contact", name, email, message })
     })
       .then(() => setSuccess(true))
       .catch(setError(true));
@@ -42,7 +42,7 @@ const Contact = props => {
           👋
         </span>
       </h1>
-    <form onSubmit={handleSubmit} name="Contact" className="contactform">
+    <form onSubmit={handleSubmit} name="Contact" className="contactform" netlify>
         <div>
           {error && (
             <div>
@@ -87,7 +87,6 @@ const Contact = props => {
               <button type="submit">Send</button>
             </div>)}
         </div>
-      )}
     </form>
     </div>
   );
