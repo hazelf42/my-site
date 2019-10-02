@@ -49,7 +49,7 @@ const Contact = props => {
         netlify
       >
         <div>
-          {error && (
+          {error!==null && (
             <div>
               Your information was not sent. Please try again later. {error}
             </div>
