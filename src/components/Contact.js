@@ -34,13 +34,13 @@ const Contact = props => {
   }
 
   return (
-    // <div style={{ padding: "10px", border: "3px solid " + props.color }}>
-    //   <h1 className="title">
-    //     Hello!{" "}
-    //     <span role="img" aria-label="Wave">
-    //       👋
-    //     </span>
-    //   </h1>
+    <div style={{ padding: "10px", border: "3px solid " + props.color }}>
+      <h1 className="title">
+        Hello!{" "}
+        <span role="img" aria-label="Wave">
+          👋
+        </span>
+      </h1>
     <form onSubmit={handleSubmit} name="Contact" className="contactform">
       {/* {({ loading, error, success }) => (
         <div>
@@ -91,7 +91,7 @@ const Contact = props => {
         {/* </div> */}
       {/* )} */}
     </form>
-    // </div>
+    </div>
   );
 };
 export default Contact;
