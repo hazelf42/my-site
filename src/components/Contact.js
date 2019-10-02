@@ -32,9 +32,9 @@ const Contact = props => {
           <div>
             {loading && <div>...</div>}
             {error && (
-              <div>Your information was not sent. Please try again later.</div>
+              <div>Your information was not sent. Please try again later. {error}</div>
             )}
-            {success && <div>Thank you for contacting us!</div>}
+            {success && <div>Success!</div>}
             {!loading && !success && (
               <div>
                 <label>
@@ -58,7 +58,7 @@ const Contact = props => {
                   />
                 </label>{" "}
                 <br />
-                <input type="submit" value="Send" />{" "}
+                <button>Send</button>
               </div>
             )}
           </div>

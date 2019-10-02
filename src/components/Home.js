@@ -61,7 +61,7 @@ function resizeHeaderOnScroll() {
 
 function Header(props) {
   window.addEventListener("scroll", resizeHeaderOnScroll);
-  console.log(props.imageUrl);
+
   return (
     <div
       style={{ backgroundImage: `url(${props.imageUrl})` }}
