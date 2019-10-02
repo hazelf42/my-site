@@ -2,11 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import "../App.css";
 import "./Header.css";
 import Hexagon from "../assets/fuck me up.png";
-import {
-  FaSketch,
-  FaWindowRestore,
-  FaDatabase,
-} from "react-icons/fa/";
+import { FaSketch, FaWindowRestore, FaDatabase } from "react-icons/fa/";
 import { DiSwift, DiReact, DiPython } from "react-icons/di";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -27,8 +23,7 @@ import DateNight from "../assets/cooldatenight.png";
 import Calculator from "../assets/calc1.png";
 import PetHp from "../assets/peth.png";
 import Scraper from "../assets/scraper.png";
-import { Textfit } from 'react-textfit';
-
+import { Textfit } from "react-textfit";
 
 function resizeHeaderOnScroll() {
   const distanceY = window.pageYOffset || document.documentElement.scrollTop,
@@ -76,14 +71,15 @@ function Header(props) {
         id="hexagon"
       />
       <img className="me" src={Me} alt="me" />
-      <p className="centered-p"><i>Hi, I'm </i></p>
+      <p className="centered-p">
+        <i>Hi, I'm </i>
+      </p>
       {/* <ScaleText > */}
       <Textfit className="centered-title" mode="single">
-      <h1 >Hazel Foerstner</h1>
+        <h1>Hazel Foerstner</h1>
       </Textfit>
       {/* </ScaleText> */}
-      <h6 className="centered-subtitle">
-      </h6>
+      <h6 className="centered-subtitle"></h6>
     </div>
   );
 }
@@ -102,8 +98,9 @@ function About(props) {
             />
             <h2> Design</h2>
             <p style={{ textAlign: "center" }}>
-              I use AdobeXd to create UI prototypes of web and mobile apps, so you can make sure
-              your app is exactly as beautiful as you pictured it, before I write one line of code.
+              I use AdobeXd to create UI prototypes of web and mobile apps, so
+              you can make sure your app is exactly as beautiful as you pictured
+              it, before I write one line of code.
               {/* Using AdobeXd, I'll create a UI prototype of your app, so that you
               can make sure your app is exactly as beautiful and intuitive as
               you'd pictured it, before I write one line of code. */}
@@ -153,6 +150,7 @@ export default function Home() {
   const [style, setStyle] = useState("green");
   const [isShowing, setIsShowing] = useState(false);
   const [clicked, setClicked] = useState(false);
+  const [openContact, setOpenContact] = useState(false);
 
   const styles = {
     green: {
@@ -196,11 +194,14 @@ export default function Home() {
     return (
       <React.Fragment>
         <h1 className="title">Portfolio</h1>
-        <div className="divider" style={{ backgroundColor: styles[style]['color'] }} />
+        <div
+          className="divider"
+          style={{ backgroundColor: styles[style]["color"] }}
+        />
         <br />
         <body>
           <Row>
-          <Col md={2} xs={4}>
+            <Col md={2} xs={4}>
               <h3 className="subtitle">Production-Ready Mobile Apps</h3>
             </Col>
             <Col xs={10}>
@@ -210,9 +211,9 @@ export default function Home() {
                   alt="Cool Date Night"
                   className="banner flex-center img"
                 />
-                <div class="middle">
+                <div className="middle">
                   {" "}
-                  <div class="text">
+                  <div className="text">
                     <img
                       src={Flutter}
                       alt="Flutter"
@@ -261,33 +262,40 @@ export default function Home() {
       "A fun, hooks-based React app using gaming website Polygon's algorithm to calculate the HP (hitpoints) of your pet.",
       "An application that can be easily adapted to scrape the menus of any Javascript-based restaurant app, then intelligently filter for vegan and vegetarian dishes."
     ];
-    let icons = [<DiReact style={{fontSize:"21px"}} />, <DiReact style={{fontSize:"21px"}} />, <DiPython />]
+    let icons = [
+      <DiReact style={{ fontSize: "21px" }} />,
+      <DiReact style={{ fontSize: "21px" }} />,
+      <DiPython />
+    ];
     return (
       <Row>
         {imageList.map(image => {
           return (
             <Col md={4} xs={12}>
-            <div className="hovercontainer" style={{height: "30VW"}}>
-              <img
-                src={image}
-                alt="Testing"
-                style={{
-                  display: "inline",
-                  objectFit: "cover",
-                  height: "100%",
-                  maxWidth: '120%',
-                }}
-              />
-              <div
-                class="middle"
-                style={{ 
-                  top: 0,
-                  left: 0
-                }}
-              >
-                <div class="text">{icons[imageList.indexOf(image)]} {text[imageList.indexOf(image)]}</div>
+              <div className="hovercontainer" style={{ height: "30VW" }}>
+                <img
+                  src={image}
+                  alt="Testing"
+                  style={{
+                    display: "inline",
+                    objectFit: "cover",
+                    height: "100%",
+                    maxWidth: "120%"
+                  }}
+                />
+                <div
+                  class="middle"
+                  style={{
+                    top: 0,
+                    left: 0
+                  }}
+                >
+                  <div class="text">
+                    {icons[imageList.indexOf(image)]}{" "}
+                    {text[imageList.indexOf(image)]}
+                  </div>
+                </div>
               </div>
-            </div>
             </Col>
           );
         })}
@@ -297,6 +305,13 @@ export default function Home() {
   if (!clicked && !isShowing) {
     timeRemixButton();
   }
+
+  var closeContactWindow = count => {
+    console.log("Hello");
+    setOpenContact(!openContact);
+    setOpenContact(!openContact);
+  };
+
   return (
     <Container style={{ maxWidth: "100VW" }}>
       <Header
@@ -321,36 +336,57 @@ export default function Home() {
                 }
               }}
             >
-              {!clicked && isShowing && 
-              <span
-                className="remixtooltip">
-                  <h6>Try me!</h6>  
-              </span> }
+              {!clicked && isShowing && (
+                <span className="remixtooltip">
+                  <h6>Try me!</h6>
+                </span>
+              )}
               <img src={Dj} alt="Remix" className="remix" />{" "}
             </button>
           </React.Fragment>
         }
       />
       <About color={styles[style]["color"]} />
-      <Popup trigger={ContactButton} modal closeOnDocumentClick>
-        <Contact color ={styles[style]['color']}/>
+      <Popup
+        trigger={openContact => ContactButton}
+        modal
+        closeOnDocumentClick
+        disabled={openContact}
+      >
+        <Contact
+          color={styles[style]["color"]}
+          parentCallback={closeContactWindow}
+        />
       </Popup>
+
       <Portfolio />
       <br />
       <div className="flex-center">
-        <button
-          style={{
-            width: "30VW",
-            height: '5VW',
-            backgroundColor: styles[style]["color"]+'CC' ,
-            color:  "white",
-            border:
-              style === "yellow" ? "2px solid" + styles[style]["color"] : "none",
-              boxShadow:" 2px 4px 5px 0px rgba(156, 156, 156, 0.75)",
-          }}
-        ><b>
-          Let's chat!</b>   
-        </button>
+        <Popup
+          trigger={
+            <button
+              style={{
+                width: "30VW",
+                height: "5VW",
+                backgroundColor: styles[style]["color"] + "CC",
+                color: "white",
+                border:
+                  style === "yellow"
+                    ? "2px solid" + styles[style]["color"]
+                    : "none",
+                boxShadow: " 2px 4px 5px 0px rgba(156, 156, 156, 0.75)"
+              }}
+            >
+              <b>Let's chat!</b>
+            </button>
+          }
+          modal
+          closeOnDocumentClick
+          disabled={openContact}>
+          <Contact
+            color={styles[style]["color"]}
+            parentCallback={closeContactWindow}/>
+        </Popup>
         <br />
         <br />
         <br />

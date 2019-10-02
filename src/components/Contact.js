@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
 import "../App.css";
-const Contact = props => {
+const Contact = ({ closeWindow }, props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
-  function handleChange(e) {
+  function handleChange(e) {  
     if (e.target.name === "Name") {
       setName(e.target.value);
     } else if (e.target.name === "Email") {
@@ -30,7 +30,9 @@ const Contact = props => {
     })
       .then(() => setSuccess(true))
       .catch(setError(true), console.log(error));
-
+    if (error!==true) { 
+      closeWindow()
+    }
     e.preventDefault();
   }
 
