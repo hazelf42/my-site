@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useForm} from "react";
 
 import "../App.css";
 const Contact = ({ closeWindow }, props) => {
@@ -7,8 +7,9 @@ const Contact = ({ closeWindow }, props) => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const [state, handleSubmit] = useForm("contactForm");
 
-  function handleChange(e) {  
+  function handleChange(e) {
     if (e.target.name === "Name") {
       setName(e.target.value);
     } else if (e.target.name === "Email") {
@@ -17,31 +18,18 @@ const Contact = ({ closeWindow }, props) => {
       setMessage(e.target.value);
     }
   }
-  function checkValid(){
+  function checkValid() {
     //do later
   }
-  const encode = data => {
-    checkValid();
-    return Object.keys(data)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&");
-  };
-  function handleSubmit(e) {
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact", name, email, message })
-    })
-      .then(() => setSuccess(true))
-      .catch(setError(true), console.log(error));
-    if (error!==true) { 
-      closeWindow()
-    }
-    e.preventDefault();
-  }
-
+  
   return (
-    <div style={{ padding: "10px", border: "3px solid " + props.color }}>
+    <div
+      style={{
+        padding: "10px",
+        border: "3px solid " + props.color,
+        height: "50%",
+      }}
+    >
       <h1 className="title">
         Hello!{" "}
         <span role="img" aria-label="Wave">
@@ -55,11 +43,13 @@ const Contact = ({ closeWindow }, props) => {
         netlify
       >
         <div>
-          {error!==null && (
+          {error !== null && (
             <div>
-              Your information was not sent. Please try again later. {error}
+              Sorry, your message was not sent. Try me at
+              hm.foerstner@gmail.com!
             </div>
           )}
+          {success && <div>Your</div>}
           {!success && (
             <div>
               <label>

@@ -15,9 +15,9 @@ p {
 }
 
 .banner {
-    height: 300px;
-    width: 70vw;
-    object-fit: cover;
+    height: auto;
+    min-width: 80vw;
+    max-width: 95vw;
     margin: 1% 0;
     opacity: 1;
     display: block;

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "../App.css";
 import "./Header.css";
-import Hexagon from "../assets/fuck me up.png";
+import Hexagon from "../assets/whitehexagon.png";
 import { FaSketch, FaWindowRestore, FaDatabase } from "react-icons/fa/";
 import { DiSwift, DiReact, DiPython } from "react-icons/di";
 import Row from "react-bootstrap/Row";
@@ -21,9 +21,11 @@ import Edibly from "../assets/edibly.png";
 import Dj from "../assets/dj.png";
 import DateNight from "../assets/cooldatenight.png";
 import Calculator from "../assets/calc1.png";
-import PetHp from "../assets/peth.png";
+import GraphCalc from "../assets/calc2.png";
+import Sociables from '../assets/sociablesbanner.png'
 import Scraper from "../assets/scraper.png";
 import { Textfit } from "react-textfit";
+import {isMobile} from 'react-device-detect';
 
 function resizeHeaderOnScroll() {
   const distanceY = window.pageYOffset || document.documentElement.scrollTop,
@@ -155,16 +157,16 @@ export default function Home() {
   const styles = {
     green: {
       backgroundImage: green,
-      color: "#1D8038"
+      color: "#1D8038",
     },
     blue: {
       backgroundImage: blue,
-      color: "#83B8BE"
+      color: "#83B8BE",
     },
     yellow: {
       backgroundImage: yellow,
-      color: "#F4DA4A"
-    }
+      color: "#F4DA4A",
+    },
   };
   const timeout = useRef(null); // to store a handle to timeout so that it can be cleared
 
@@ -201,15 +203,16 @@ export default function Home() {
         <br />
         <body>
           <Row>
-            <Col md={2} xs={4}>
+            <Col md={2} xs={12}>
               <h3 className="subtitle">Production-Ready Mobile Apps</h3>
             </Col>
-            <Col xs={10}>
+            <Col md={10} xs={12}>
               <div className="hovercontainer">
                 <img
                   src={DateNight}
                   alt="Cool Date Night"
                   className="banner flex-center img"
+                  style={{objectFit: isMobile ? "scale-down" : "cover"}}
                 />
                 <div className="middle">
                   {" "}
@@ -228,6 +231,8 @@ export default function Home() {
                   src={Edibly}
                   alt="Edibly"
                   className="banner flex-center img"
+                  style={{objectFit: isMobile ? "scale-down" : "cover"}}
+
                 />
                 <div class="middle">
                   <div class="text">
@@ -241,13 +246,27 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+              <div className="hovercontainer">
+                <img
+                  src={Sociables}
+                  alt="Sociables"
+                  style={{objectFit: isMobile ? "scale-down" : "cover"}}
+                  className="banner flex-center img"
+                />
+                <div className="middle">
+                  {" "}
+                  <div className="text">
+                    <DiReact style={{ fontSize: "21px" }} /> Sociables
+                  </div>
+                </div>
+              </div>
             </Col>
           </Row>
           <Row>
-            <Col md={2} xs={4}>
+            <Col md={2} xs={12}>
               <h3 className="subtitle">Other Projects</h3>
             </Col>
-            <Col xs={10}>
+            <Col md={10} xs={12}>
               <Gallery />
             </Col>
           </Row>
@@ -256,46 +275,53 @@ export default function Home() {
     );
   }
   function Gallery() {
-    let imageList = [Calculator, PetHp, Scraper];
+    let imageList = [Calculator, GraphCalc, Scraper];
     let text = [
       "An intuitive, simple calculator designed to show the environmental impact of the way you eat, based on several peer-reviewed sources and meta-analyses.",
-      "A fun, hooks-based React app using gaming website Polygon's algorithm to calculate the HP (hitpoints) of your pet.",
-      "An application that can be easily adapted to scrape the menus of any Javascript-based restaurant app, then intelligently filter for vegan and vegetarian dishes."
+      "A robust graphing app designed to allow engineering faculty to share customizable equations with their classes.",
+      "An application that can be easily adapted to scrape the menus of any Javascript-based restaurant app, then intelligently filter for vegan and vegetarian dishes.",
+    ];
+    let urls = [
+      "http://calculator.hazelis.online",
+      "https://graphingcalchf.netlify.app/",
+      "https://github.com/hazelf42/menu-scraper",
     ];
     let icons = [
       <DiReact style={{ fontSize: "21px" }} />,
       <DiReact style={{ fontSize: "21px" }} />,
-      <DiPython />
+      <DiPython />,
     ];
     return (
       <Row>
-        {imageList.map(image => {
+        {imageList.map((image) => {
           return (
             <Col md={4} xs={12}>
-              <div className="hovercontainer" style={{ height: "30VW" }}>
-                <img
-                  src={image}
-                  alt="Testing"
-                  style={{
-                    display: "inline",
-                    objectFit: "cover",
-                    height: "100%",
-                    maxWidth: "120%"
-                  }}
-                />
-                <div
-                  class="middle"
-                  style={{
-                    top: 0,
-                    left: 0
-                  }}
-                >
-                  <div class="text">
-                    {icons[imageList.indexOf(image)]}{" "}
-                    {text[imageList.indexOf(image)]}
+              <a href={urls[imageList.indexOf(image)]}>
+                <div className="hovercontainer" style={{ height: "30VW" }}>
+                  <img
+                    src={image}
+                    alt="Testing"
+                    style={{
+                      display: "inline",
+                      objectFit: "cover",
+                      height: "100%",
+                      maxWidth: "100%",
+                    }}
+                  />
+                  <div
+                    class="middle"
+                    style={{
+                      top: 0,
+                      left: 0,
+                    }}
+                  >
+                    <div class="text">
+                      {icons[imageList.indexOf(image)]}{" "}
+                      {text[imageList.indexOf(image)]}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </a>
             </Col>
           );
         })}
@@ -306,7 +332,7 @@ export default function Home() {
     timeRemixButton();
   }
 
-  var closeContactWindow = count => {
+  var closeContactWindow = (count) => {
     console.log("Hello");
     setOpenContact(!openContact);
     setOpenContact(!openContact);
@@ -336,11 +362,6 @@ export default function Home() {
                 }
               }}
             >
-              {!clicked && isShowing && (
-                <span className="remixtooltip">
-                  <h6>Try me!</h6>
-                </span>
-              )}
               <img src={Dj} alt="Remix" className="remix" />{" "}
             </button>
           </React.Fragment>
@@ -348,7 +369,7 @@ export default function Home() {
       />
       <About color={styles[style]["color"]} />
       <Popup
-        trigger={openContact => ContactButton}
+        trigger={(openContact) => ContactButton}
         modal
         closeOnDocumentClick
         disabled={openContact}
@@ -367,14 +388,13 @@ export default function Home() {
             <button
               style={{
                 width: "30VW",
-                height: "5VW",
                 backgroundColor: styles[style]["color"] + "CC",
                 color: "white",
                 border:
                   style === "yellow"
                     ? "2px solid" + styles[style]["color"]
                     : "none",
-                boxShadow: " 2px 4px 5px 0px rgba(156, 156, 156, 0.75)"
+                boxShadow: " 2px 4px 5px 0px rgba(156, 156, 156, 0.75)",
               }}
             >
               <b>Let's chat!</b>
@@ -382,10 +402,12 @@ export default function Home() {
           }
           modal
           closeOnDocumentClick
-          disabled={openContact}>
+          disabled={openContact}
+        >
           <Contact
             color={styles[style]["color"]}
-            parentCallback={closeContactWindow}/>
+            parentCallback={closeContactWindow}
+          />
         </Popup>
         <br />
         <br />
