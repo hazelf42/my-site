@@ -7,7 +7,6 @@ import { DiSwift, DiReact, DiPython } from "react-icons/di";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import "react-bootstrap";
 import Flutter from "../assets/flutter.png";
 import Me from "../assets/cry.jpg";
 import Popup from "reactjs-popup";
