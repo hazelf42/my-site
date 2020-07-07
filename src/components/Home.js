@@ -394,7 +394,8 @@ export default function Home() {
           trigger={
             <button
               style={{
-                width: "30VW",
+                width: "200px",
+                marginbottom: "100px",
                 backgroundColor: styles[style]["color"] + "CC",
                 color: "white",
                 border:
