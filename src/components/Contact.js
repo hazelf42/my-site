@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState   } from "react";
 
 import "../App.css";
 const Contact = ({ closeWindow }, props) => {
@@ -68,7 +68,7 @@ const Contact = ({ closeWindow }, props) => {
             </div>
           )}
           <input type="hidden" name="form-name" value="contact" />
-          {success && <div>Your</div>}
+          {success && <div>Success! Your message was sent, I'll get back to you soon!</div>}
           {!success && (
             <div>
               <label>
@@ -96,9 +96,9 @@ const Contact = ({ closeWindow }, props) => {
                 Message
                 <br />
                 <input
-                  type="text"
+                  type="textarea"
                   name="Message"
-                  style={{ width: "40VW", height: "30VW" }}
+                  style={{ width: "40VW", height: "20VW" }}
                   onChange={handleChange}
                 />
               </label>{" "}
