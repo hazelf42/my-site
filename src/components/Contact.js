@@ -1,4 +1,4 @@
-import React, { useState , useForm} from "react";
+import React, { useState } from "react";
 
 import "../App.css";
 const Contact = ({ closeWindow }, props) => {
@@ -7,8 +7,26 @@ const Contact = ({ closeWindow }, props) => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
-  const [state, handleSubmit] = useForm("contactForm");
 
+  const handleSubmit = (e) => {
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", name: name,  email:  email, message: message }),
+    })
+      .then(() => setSuccess(true))
+      .catch((error) => setError(true));
+
+    e.preventDefault();
+  };
+
+  const encode = (data) => {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+      )
+      .join("&");
+  };
   function handleChange(e) {
     if (e.target.name === "Name") {
       setName(e.target.value);
@@ -18,10 +36,10 @@ const Contact = ({ closeWindow }, props) => {
       setMessage(e.target.value);
     }
   }
-  function checkValid() {
-    //do later
-  }
-  
+  // function checkValid() {
+  //   //do later
+  // }
+
   return (
     <div
       style={{
@@ -49,6 +67,7 @@ const Contact = ({ closeWindow }, props) => {
               hm.foerstner@gmail.com!
             </div>
           )}
+          <input type="hidden" name="form-name" value="contact" />
           {success && <div>Your</div>}
           {!success && (
             <div>

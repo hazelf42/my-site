@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import "../App.css";
 import "./Header.css";
 import Hexagon from "../assets/whitehexagon.png";
@@ -80,7 +80,7 @@ function Header(props) {
         <h1>Hazel Foerstner</h1>
       </Textfit>
       {/* </ScaleText> */}
-      <h6 className="centered-subtitle"></h6>
+      <h6 className="centered-subtitle"> </h6>
     </div>
   );
 }
