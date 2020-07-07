@@ -16,8 +16,6 @@ p {
 
 .banner {
     height: auto;
-    min-width: 80vw;
-    max-width: 95vw;
     margin: 1% 0;
     opacity: 1;
     display: block;

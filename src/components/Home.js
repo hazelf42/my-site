@@ -205,13 +205,13 @@ export default function Home() {
             <Col md={2} xs={12}>
               <h3 className="subtitle">Production-Ready Mobile Apps</h3>
             </Col>
-            <Col md={10} xs={12}>
+            <Col md={9} xs={12}>
               <div className="hovercontainer">
                 <img
                   src={DateNight}
                   alt="Cool Date Night"
                   className="banner flex-center img"
-                  style={{objectFit: isMobile ? "scale-down" : "cover"}}
+                  style={{objectFit: isMobile ? "scale-down" : "cover", width: isMobile ? "95VW" : "80VW"}}
                 />
                 <div className="middle">
                   {" "}
@@ -230,7 +230,7 @@ export default function Home() {
                   src={Edibly}
                   alt="Edibly"
                   className="banner flex-center img"
-                  style={{objectFit: isMobile ? "scale-down" : "cover"}}
+                  style={{objectFit: isMobile ? "scale-down" : "cover",  width: isMobile ? "95VW" : "80VW"}}
 
                 />
                 <div class="middle">
@@ -249,7 +249,7 @@ export default function Home() {
                 <img
                   src={Sociables}
                   alt="Sociables"
-                  style={{objectFit: isMobile ? "scale-down" : "cover"}}
+                  style={{objectFit: isMobile ? "scale-down" : "cover",  width: isMobile ? "95VW" : "80VW"}}
                   className="banner flex-center img"
                 />
                 <div className="middle">
