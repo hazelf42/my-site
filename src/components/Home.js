@@ -302,7 +302,7 @@ export default function Home() {
       <Row>
         {imageList.map((image) => {
           return (
-            <Col md={4} xs={12}>
+            <Col md={4} xs={3}>
               <a href={urls[imageList.indexOf(image)]}>
                 <div className="hovercontainer" style={{ height: "30VW" }}>
                   <img
