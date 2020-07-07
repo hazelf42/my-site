@@ -21,10 +21,10 @@ import Dj from "../assets/dj.png";
 import DateNight from "../assets/cooldatenight.png";
 import Calculator from "../assets/calc1.png";
 import GraphCalc from "../assets/calc2.png";
-import Sociables from '../assets/sociablesbanner.png'
+import Sociables from "../assets/sociablesbanner.png";
 import Scraper from "../assets/scraper.png";
 import { Textfit } from "react-textfit";
-import {isMobile} from 'react-device-detect';
+import { isMobile } from "react-device-detect";
 
 function resizeHeaderOnScroll() {
   const distanceY = window.pageYOffset || document.documentElement.scrollTop,
@@ -210,8 +210,11 @@ export default function Home() {
                 <img
                   src={DateNight}
                   alt="Cool Date Night"
-                  className="banner flex-center img"
-                  style={{objectFit: isMobile ? "scale-down" : "cover", width: isMobile ? "95VW" : "80VW"}}
+                  className={
+                    isMobile
+                      ? "banner-mobile flex-center img"
+                      : "banner flex-center img"
+                  }
                 />
                 <div className="middle">
                   {" "}
@@ -229,9 +232,11 @@ export default function Home() {
                 <img
                   src={Edibly}
                   alt="Edibly"
-                  className="banner flex-center img"
-                  style={{objectFit: isMobile ? "scale-down" : "cover",  width: isMobile ? "95VW" : "80VW"}}
-
+                  className={
+                    isMobile
+                      ? "banner-mobile flex-center img"
+                      : "banner flex-center img"
+                  }
                 />
                 <div class="middle">
                   <div class="text">
@@ -249,8 +254,11 @@ export default function Home() {
                 <img
                   src={Sociables}
                   alt="Sociables"
-                  style={{objectFit: isMobile ? "scale-down" : "cover",  width: isMobile ? "95VW" : "80VW"}}
-                  className="banner flex-center img"
+                  className={
+                    isMobile
+                      ? "banner-mobile flex-center img"
+                      : "banner flex-center img"
+                  }
                 />
                 <div className="middle">
                   {" "}
