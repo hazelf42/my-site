@@ -15,7 +15,7 @@ p {
 }
 
 .banner {
-    height: auto;
+    height: 20vW;
     margin: 1% 0;
     opacity: 1;
     display: block;
