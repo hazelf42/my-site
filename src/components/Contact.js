@@ -95,10 +95,10 @@ const Contact = ({ closeWindow }, props) => {
               <label>
                 Message
                 <br />
-                <input
+                <textarea
                   type="textarea"
                   name="Message"
-                  style={{ width: "40VW", height: "20VW" }}
+                  style={{ width: "40VW", height: "20VH" }}
                   onChange={handleChange}
                 />
               </label>{" "}
