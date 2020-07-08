@@ -8,7 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Flutter from "../assets/flutter.png";
-import Me from "../assets/cry.jpg";
+import Me from "../assets/headshot.png";
 import Popup from "reactjs-popup";
 import Contact from "./Contact";
 import Hello from "../assets/hello.png";
@@ -60,7 +60,7 @@ function Header(props) {
 
   return (
     <div
-      style={{ backgroundImage: `url(${props.imageUrl})` }}
+      style={{ backgroundImage: `url(${props.imageUrl})`, backgroundColor: props.color }}
       className="header flex-center"
       id="header"
     >
@@ -97,6 +97,7 @@ function About(props) {
               className="icon"
               style={{ padding: "5%", color: Color(props.color).darken(0.7) }}
             />
+
             <h2> Design</h2>
             <p style={{ textAlign: "center" }}>
               I use AdobeXd to create UI prototypes of web and mobile apps, so
@@ -167,6 +168,8 @@ export default function Home() {
       color: "#F4DA4A",
     },
   };
+
+  
   const timeout = useRef(null); // to store a handle to timeout so that it can be cleared
 
   // Timer stuff
@@ -348,6 +351,7 @@ export default function Home() {
   return (
     <Container style={{ maxWidth: "100VW" }}>
       <Header
+      color={styles[style]['color']}
         imageUrl={styles[style]["backgroundImage"]}
         remixButton={
           <React.Fragment>

@@ -10,6 +10,7 @@
     "cors": "^2.8.5",
     "eslint-utils": "^1.4.2",
     "express": "^4.17.1",
+    "gatsby-image": "^2.4.12",
     "nodemailer": "^6.4.10",
     "normalize.css": "^8.0.1",
     "react": "^16.9.0",
