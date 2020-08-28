@@ -5,12 +5,21 @@ const Sociables = (props) => (
   <Fragment>
     <div style={{padding: 50}}>
       <body>
-      <strong>Hi,</strong>
+      <strong>Hi,</strong>  <br  />
           I'm Hazel, I made this app as a personal project. I'm not a lawyer, but here's the important stuff:
           <br />
-          Google's Firebase manages your email and google login information, as well as all the ads and ad targeting. 
+          Google's Firebase manages your email and password logins, and google login information. Still, maybe don't use your bank password for this app.
+          <br/>Google's adsense also manages all in-app ads and ad targeting.
           <br />
-          Facebook manages your Facebook login. Other than this data, I do not collect any other data. 
+          I collect log data from your phone for debugging purposes. 
+          <br/>
+          Facebook manages your Facebook login. Other than the above, I do not collect any other data. 
+        <br/><br/>
+        c
+This game in no way encourages excessive or underage drinking. Please drink responsibly. Don't drink if you're under the legal age in your region. I don't even think I'm legally obligated to say that, that's just personal advice from me to you.<br/>
+<br />
+ Please don't sue me if you fail to drink responsibly. Thanks.<br/><br/>
+        <br />
         <strong>Privacy Policy</strong>{" "}
         <p>
           Hazel Foerstner built the Sociables app as an Ad Supported app. This
