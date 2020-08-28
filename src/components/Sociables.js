@@ -5,6 +5,12 @@ const Sociables = (props) => (
   <Fragment>
     <div style={{padding: 50}}>
       <body>
+      <strong>Hi,</strong>
+          I'm Hazel, I made this app as a personal project. I'm not a lawyer, but here's the important stuff:
+          <br />
+          Google's Firebase manages your email and google login information, as well as all the ads and ad targeting. 
+          <br />
+          Facebook manages your Facebook login. Other than this data, I do not collect any other data. 
         <strong>Privacy Policy</strong>{" "}
         <p>
           Hazel Foerstner built the Sociables app as an Ad Supported app. This
