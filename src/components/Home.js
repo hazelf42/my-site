@@ -8,13 +8,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Flutter from "../assets/flutter.png";
-import Me from "../assets/headshot.png";
 import Popup from "reactjs-popup";
 import Contact from "./Contact";
 import Hello from "../assets/hello.png";
-import blue from "../assets/blue.png";
-import green from "../assets/green.png";
-import yellow from "../assets/yellow.png";
 import Color from "color";
 import Edibly from "../assets/edibly.png";
 import Dj from "../assets/dj.png";
@@ -25,29 +21,7 @@ import Sociables from "../assets/sociablesbanner.png";
 import Scraper from "../assets/scraper.png";
 import { Textfit } from "react-textfit";
 import { isMobile } from "react-device-detect";
-const Image = props => {
-  const [isLoaded, setIsLoaded] = React.useState(false);
-  return (
-    <React.Fragment>
-      <img
-        className="image thumb"
-
-        alt={props.alt}
-        src={props.thumb}
-        style={{ ...props.style, visibility: isLoaded ? "hidden" : "visible" }}
-      />
-      <img
-        onLoad={() => {
-          setIsLoaded(true);
-        }}
-        className={props.className}
-        style={{ opacity: isLoaded ? 1 : 0 }}
-        alt={props.alt}
-        src={props.src}
-      />
-    </React.Fragment>
-  );
-};
+import { ImageContainer } from "./ImageLazyLoading.js";
 
 function resizeHeaderOnScroll() {
   const distanceY = window.pageYOffset || document.documentElement.scrollTop,
@@ -55,61 +29,125 @@ function resizeHeaderOnScroll() {
     shrinkOn2 = 300; //set to small
 
   var headerEl = document.getElementById("header");
+  var headerImg = document.getElementById("headerImg");
   var hexagon = document.getElementById("hexagon");
-
   //if smaller than shrinkOn1
   if (distanceY > shrinkOn2) {
     //Shrink a lot
     headerEl.classList.add("smaller");
     headerEl.classList.remove("medium");
+
+    headerImg.classList.add("smaller");
+    headerImg.classList.remove("medium");
+
     hexagon.classList.add("hexagonsmall");
   } else if (distanceY > shrinkOn1) {
     //Shrink a little
     headerEl.classList.add("medium");
-    hexagon.classList.add("hexagonmedium");
     headerEl.classList.remove("smaller");
+
+    headerImg.classList.add("medium");
+    headerImg.classList.remove("smaller");
+
+    hexagon.classList.add("hexagonmedium");
     hexagon.classList.remove("hexagonsmall");
   } else {
     //Big
     headerEl.classList.remove("medium");
     headerEl.classList.remove("smaller");
+
+    headerImg.classList.remove("medium");
+    headerImg.classList.remove("smaller");
+
     hexagon.classList.remove("hexagonsmall");
     hexagon.classList.remove("hexagonmedium");
   }
 }
+function blurChangeHeaders() {
+  var blurable = document.getElementById("headerImg");
+  blurable.classList.add("header-image-blur");
+  setTimeout(() => {
+    blurable.classList.remove("header-image-blur");
+  }, 300); // schedule to hide tooltip
 
+}
 function Header(props) {
   window.addEventListener("scroll", resizeHeaderOnScroll);
-
   return (
-    <div
-      style={{
-        backgroundImage: `url(${props.imageUrl})`,
-        backgroundColor: props.color,
-      }}
-      className="header flex-center"
-      id="header"
-    >
-      {props.remixButton}
-      <img
-        src={Hexagon}
-        className="hexagonbig flex-center"
-        alt="Hexagon"
-        id="hexagon"
-      />
-      <Image className="me" src={Me} alt="me" />
-      <p className="centered-p">
-        <i>Hi, I'm </i>
-      </p>
-      {/* <ScaleText > */}
-      <Textfit className="centered-title" mode="single">
-        <h1>Hazel Foerstner</h1>
-      </Textfit>
-      {/* </ScaleText> */}
-      <h6 className="centered-subtitle"> </h6>
-    </div>
+    <React.Fragment>
+      <div id="headerImg" className="header flex-center">
+        <ImageContainer
+          src={props.imageUrl}
+          thumb={props.imageThumb}
+          className=""
+        />
+      </div>
+      <div className="header flex-center" id="header">
+        {props.remixButton}
+        <img
+          src={Hexagon}
+          className="hexagonbig flex-center"
+          alt="Hexagon"
+          id="hexagon"
+        />
+        <div className="me">
+          <ImageContainer
+            src={require("../assets/headshot.png")}
+            thumb={require("../assets/headshot_thumb.png")}
+            alt="me"
+            style={{ height: "100%", width: "100%" }}
+          />
+        </div>
+        <p className="centered-p">
+          <i>Hi, I'm </i>
+        </p>
+        {/* <ScaleText > */}
+        <Textfit className="centered-title" mode="single">
+          <h1>Hazel Foerstner</h1>
+        </Textfit>
+        {/* </ScaleText> */}
+        <h6 className="centered-subtitle"> </h6>
+      </div>
+    </React.Fragment>
   );
 }
+// function Header(props) {
+//   window.addEventListener("scroll", resizeHeaderOnScroll);
+//   return (
+//     <React.Fragment>
+//       <ImageContainer
+//         className="header flex-center"
+//         src={props.imageUrl}
+//         thumb={props.thumbUrl}
+//         // id="header"
+//       />
+//       <div className="header flex-center" id="header">
+//         {props.remixButton}
+//         <img
+//           src={Hexagon}
+//           className="hexagonbig flex-center"
+//           alt="Hexagon"
+//           id="hexagon"
+//         />
+//         <img
+//           className="me"
+//           src={require("../assets/headshot.png")}
+//           alt="me"
+//           style={{ borderRadius: "50%" }}
+//         />
+//         <p className="centered-p">
+//           <i>Hi, I'm </i>
+//         </p>
+//         {/* <ScaleText > */}
+//         <Textfit className="centered-title" mode="single">
+//           <h1>Hazel Foerstner</h1>
+//         </Textfit>
+//         {/* </ScaleText> */}
+//         <h6 className="centered-subtitle"> </h6>
+//       </div>
+//     </React.Fragment>
+//   );
+// }
 function About(props) {
   return (
     <div className="about flex-center">
@@ -182,15 +220,18 @@ export default function Home() {
 
   const styles = {
     green: {
-      backgroundImage: green,
+      backgroundImage: require("../assets/green.png"),
+      imageThumb: require("../assets/green_thumb.png"),
       color: "#1D8038",
     },
     blue: {
-      backgroundImage: blue,
+      backgroundImage: require("../assets/blue.png"),
+      imageThumb: require("../assets/blue_thumb.png"),
       color: "#83B8BE",
     },
     yellow: {
-      backgroundImage: yellow,
+      backgroundImage: require("../assets/yellow.png"),
+      imageThumb: require("../assets/yellow_thumb.png"),
       color: "#F4DA4A",
     },
   };
@@ -228,21 +269,22 @@ export default function Home() {
           style={{ backgroundColor: styles[style]["color"] }}
         />
         <br />
-        <body>
+        <div>
           <Row>
             <Col md={2} xs={12}>
               <h3 className="subtitle">Production-Ready Mobile Apps</h3>
             </Col>
             <Col md={9} xs={12}>
               <div className="hovercontainer">
-                <Image
+                <ImageContainer
                   src={DateNight}
                   alt="Cool Date Night"
                   className={
                     isMobile
-                      ? "banner-mobile flex-center img"
-                      : "banner flex-center img"
+                      ? "banner-mobile flex-center "
+                      : "banner flex-center "
                   }
+                  style={{objectFit: 'cover'}}
                 />
                 <div className="middle">
                   {" "}
@@ -257,7 +299,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="hovercontainer">
-                <Image
+                <ImageContainer
                   src={Edibly}
                   alt="Edibly"
                   className={
@@ -266,8 +308,8 @@ export default function Home() {
                       : "banner flex-center img"
                   }
                 />
-                <div class="middle">
-                  <div class="text">
+                <div className="middle">
+                  <div className="text">
                     <img
                       src={Flutter}
                       alt="Flutter"
@@ -279,7 +321,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="hovercontainer">
-                <Image
+                <ImageContainer
                   src={Sociables}
                   alt="Sociables"
                   className={
@@ -305,7 +347,7 @@ export default function Home() {
               <Gallery />
             </Col>
           </Row>
-        </body>
+        </div>
       </React.Fragment>
     );
   }
@@ -344,13 +386,13 @@ export default function Home() {
                     }}
                   />
                   <div
-                    class="middle"
+                    className="middle"
                     style={{
                       top: 0,
                       left: 0,
                     }}
                   >
-                    <div class="text">
+                    <div className="text">
                       {icons[imageList.indexOf(image)]}{" "}
                       {text[imageList.indexOf(image)]}
                     </div>
@@ -378,6 +420,7 @@ export default function Home() {
       <Header
         color={styles[style]["color"]}
         imageUrl={styles[style]["backgroundImage"]}
+        imageThumb={styles[style]["imageThumb"]}
         remixButton={
           <React.Fragment>
             <button
@@ -389,13 +432,16 @@ export default function Home() {
               className="remixBg"
               onClick={() => {
                 setClicked(true);
-                if (style === "green") {
-                  setStyle("blue");
-                } else if (style === "blue") {
-                  setStyle("yellow");
-                } else if (style === "yellow") {
-                  setStyle("green");
-                }
+                blurChangeHeaders();
+                timeout.current = setTimeout(() => {
+                  if (style === "green") {
+                    setStyle("blue");
+                  } else if (style === "blue") {
+                    setStyle("yellow");
+                  } else if (style === "yellow") {
+                    setStyle("green");
+                  }
+                }, 150); // schedule to hide tooltip
               }}
             >
               <img src={Dj} alt="Remix" className="remix" />{" "}

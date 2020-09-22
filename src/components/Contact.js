@@ -1,6 +1,7 @@
 import React, { useState   } from "react";
 
 import "../App.css";
+
 const Contact = ({ closeWindow }, props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
