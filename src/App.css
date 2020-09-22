@@ -40,6 +40,8 @@ p {
 }
 .hovercontainer {
   position: relative;
+  border-width: 0;
+  background-color: transparent;
 }
 .hovercontainer:hover .img {
   margin: 0;

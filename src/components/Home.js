@@ -69,7 +69,6 @@ function blurChangeHeaders() {
   setTimeout(() => {
     blurable.classList.remove("header-image-blur");
   }, 300); // schedule to hide tooltip
-
 }
 function Header(props) {
   window.addEventListener("scroll", resizeHeaderOnScroll);
@@ -275,6 +274,7 @@ export default function Home() {
               <h3 className="subtitle">Production-Ready Mobile Apps</h3>
             </Col>
             <Col md={9} xs={12}>
+            <a href="https://apps.apple.com/in/app/cool-date-night/id1402648300#:~:text=Cool%20Date%20Night%20is%20a,tailored%20to%20your%20relationship%20status.">
               <div className="hovercontainer">
                 <ImageContainer
                   src={DateNight}
@@ -284,7 +284,7 @@ export default function Home() {
                       ? "banner-mobile flex-center "
                       : "banner flex-center "
                   }
-                  style={{objectFit: 'cover'}}
+                  style={{ objectFit: "cover" }}
                 />
                 <div className="middle">
                   {" "}
@@ -298,7 +298,26 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+
               <div className="hovercontainer">
+                <ImageContainer
+                  src={Sociables}
+                  alt="Sociables"
+                  className={
+                    isMobile
+                      ? "banner-mobile flex-center img"
+                      : "banner flex-center img"
+                  }
+                />
+                <div className="middle">
+                  {" "}
+                  <div className="text">
+                    <DiReact style={{ fontSize: "21px" }} /> Sociables
+                  </div>
+                </div>
+              </div>
+              </a>
+              <button className="hovercontainer">
                 <ImageContainer
                   src={Edibly}
                   alt="Edibly"
@@ -319,24 +338,7 @@ export default function Home() {
                     Edibly
                   </div>
                 </div>
-              </div>
-              <div className="hovercontainer">
-                <ImageContainer
-                  src={Sociables}
-                  alt="Sociables"
-                  className={
-                    isMobile
-                      ? "banner-mobile flex-center img"
-                      : "banner flex-center img"
-                  }
-                />
-                <div className="middle">
-                  {" "}
-                  <div className="text">
-                    <DiReact style={{ fontSize: "21px" }} /> Sociables
-                  </div>
-                </div>
-              </div>
+              </button>
             </Col>
           </Row>
           <Row>
@@ -463,6 +465,9 @@ export default function Home() {
       </Popup>
 
       <Portfolio />
+      <br />
+      <br />
+      <br />
       <br />
       <div className="flex-center">
         <Popup
