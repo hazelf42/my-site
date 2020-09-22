@@ -1,135 +1,141 @@
 p {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .divider {
-    background-color: black;
-    height: 5px;
-    width: 20vw;
+  background-color: black;
+  height: 5px;
+  width: 20vw;
 }
 
 .banner {
-    height: 20vW;
-    margin: 1% 0;
-    opacity: 1;
-    width: 80vw;
-    object-fit: cover;
-    display: block;
-    transition: .5s ease;
-    backface-visibility: hidden;
+  height: 20vw;
+  margin: 1% 0;
+  opacity: 1;
+  width: 80vw;
+  object-fit: cover;
+  display: block;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
 }
 .banner-mobile {
-    height: 40vw;
-    margin: 1% 0;
-    width: 95vw;
-    opacity: 1;
-    display: block;
-    object-fit: cover;
+  height: 40vw;
+  margin: 1% 0;
+  width: 95vw;
+  opacity: 1;
+  display: block;
+  object-fit: cover;
 
-    transition: .5s ease;
-    backface-visibility: hidden;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
 }
 .hovercontainer {
-    position: relative;
+  position: relative;
 }
 .hovercontainer:hover .img {
-    margin: 0;
-    padding: 0;
-    opacity: 0.3;
+  margin: 0;
+  padding: 0;
+  opacity: 0.3;
 }
 
 .hovercontainer:hover .middle {
-    margin: 0;
-    padding: 0;
-    opacity: 1;
+  margin: 0;
+  padding: 0;
+  opacity: 1;
 }
 .middle {
-    transition: .5s ease;
-    opacity: 0;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-  }
-  .text {
-    color: white;
-    font-size: 16px;
-    padding: 8px 16px;
-    text-align: left; 
-    justify-content: left;
-    background-color: #2c2c2cad;
-  }
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+.text {
+  color: white;
+  font-size: 16px;
+  padding: 8px 16px;
+  text-align: left;
+  justify-content: left;
+  background-color: #2c2c2cad;
+}
 
 .title {
-    font-family: 'Domine', serif;
-    font-size: 250%;
-    font-weight: 400;
+  font-family: "Domine", serif;
+  font-size: 250%;
+  font-weight: 400;
 }
 .subtitle {
-    font-family: 'Domine', serif;
-    font-size: 150%;
-    font-weight: 400;
+  font-family: "Domine", serif;
+  font-size: 150%;
+  font-weight: 400;
 }
 
 .about {
-    margin-top: 68vh;
-    margin-bottom: 5vh;
+  margin-top: 68vh;
+  margin-bottom: 5vh;
 }
 .card {
-    background-color: #DEEAE5;
-    border: none;   
-    box-shadow: 2px 4px 5px 0px rgba(156, 156, 156, 0.75);
-    text-align: center
+  background-color: #deeae5;
+  border: none;
+  box-shadow: 2px 4px 5px 0px rgba(156, 156, 156, 0.75);
+  text-align: center;
 }
 
-.icon{
-    background-color: white;
-    text-align: center;
-    font-size: 700%;
-    padding: 7%;
-    margin: 5% 0;
-    border-radius: 50%;
-    overflow: visible;
-    color: #26313D;
+.icon {
+  background-color: white;
+  text-align: center;
+  font-size: 700%;
+  padding: 7%;
+  margin: 5% 0;
+  border-radius: 50%;
+  overflow: visible;
+  color: #26313d;
+}
+
+.thumb {
+  filter: blur(20px);
+  transform: scale(1.1);
+  transition: visibility 0ms ease 400ms;
 }
 .about h1 {
-    font-family: 'Domine', serif;
-    font-size: 250%;
-    display: inline
+  font-family: "Domine", serif;
+  font-size: 250%;
+  display: inline;
 }
 
 .about h2 {
-    font-family: 'Domine';
-    font-size: 150%;
-    font-weight: 400;
-    text-align: center
+  font-family: "Domine";
+  font-size: 150%;
+  font-weight: 400;
+  text-align: center;
 }
 
 .about p {
-    margin: 1%  5% 5%;
-    font-family: 'Roboto';
-    font-weight: 400;
-    font-size: 90%;
-    text-align: center;
+  margin: 1% 5% 5%;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 90%;
+  text-align: center;
 }
 .contactButton {
-    z-index: 100;
-    position: fixed;
-    color: white;
-    float: left;
-    bottom: 10%;
-    left: 3%;
-    height: 75px;
-    padding: 0 0 5px 0;
-    width: 75px;
-    border: none;
-    border-radius: 50%;
+  z-index: 100;
+  position: fixed;
+  color: white;
+  float: left;
+  bottom: 10%;
+  left: 3%;
+  height: 75px;
+  padding: 0 0 5px 0;
+  width: 75px;
+  border: none;
+  border-radius: 50%;
 }
 .contactform {
-    font-family: "Roboto"
+  font-family: "Roboto";
 }

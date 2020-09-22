@@ -25,6 +25,29 @@ import Sociables from "../assets/sociablesbanner.png";
 import Scraper from "../assets/scraper.png";
 import { Textfit } from "react-textfit";
 import { isMobile } from "react-device-detect";
+const Image = props => {
+  const [isLoaded, setIsLoaded] = React.useState(false);
+  return (
+    <React.Fragment>
+      <img
+        className="image thumb"
+
+        alt={props.alt}
+        src={props.thumb}
+        style={{ ...props.style, visibility: isLoaded ? "hidden" : "visible" }}
+      />
+      <img
+        onLoad={() => {
+          setIsLoaded(true);
+        }}
+        className={props.className}
+        style={{ opacity: isLoaded ? 1 : 0 }}
+        alt={props.alt}
+        src={props.src}
+      />
+    </React.Fragment>
+  );
+};
 
 function resizeHeaderOnScroll() {
   const distanceY = window.pageYOffset || document.documentElement.scrollTop,
@@ -60,7 +83,10 @@ function Header(props) {
 
   return (
     <div
-      style={{ backgroundImage: `url(${props.imageUrl})`, backgroundColor: props.color }}
+      style={{
+        backgroundImage: `url(${props.imageUrl})`,
+        backgroundColor: props.color,
+      }}
       className="header flex-center"
       id="header"
     >
@@ -71,7 +97,7 @@ function Header(props) {
         alt="Hexagon"
         id="hexagon"
       />
-      <img className="me" src={Me} alt="me" />
+      <Image className="me" src={Me} alt="me" />
       <p className="centered-p">
         <i>Hi, I'm </i>
       </p>
@@ -169,7 +195,6 @@ export default function Home() {
     },
   };
 
-  
   const timeout = useRef(null); // to store a handle to timeout so that it can be cleared
 
   // Timer stuff
@@ -210,7 +235,7 @@ export default function Home() {
             </Col>
             <Col md={9} xs={12}>
               <div className="hovercontainer">
-                <img
+                <Image
                   src={DateNight}
                   alt="Cool Date Night"
                   className={
@@ -232,7 +257,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="hovercontainer">
-                <img
+                <Image
                   src={Edibly}
                   alt="Edibly"
                   className={
@@ -254,7 +279,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="hovercontainer">
-                <img
+                <Image
                   src={Sociables}
                   alt="Sociables"
                   className={
@@ -351,7 +376,7 @@ export default function Home() {
   return (
     <Container style={{ maxWidth: "100VW" }}>
       <Header
-      color={styles[style]['color']}
+        color={styles[style]["color"]}
         imageUrl={styles[style]["backgroundImage"]}
         remixButton={
           <React.Fragment>
