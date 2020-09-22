@@ -274,48 +274,49 @@ export default function Home() {
               <h3 className="subtitle">Production-Ready Mobile Apps</h3>
             </Col>
             <Col md={9} xs={12}>
-            <a href="https://apps.apple.com/in/app/cool-date-night/id1402648300#:~:text=Cool%20Date%20Night%20is%20a,tailored%20to%20your%20relationship%20status.">
-              <div className="hovercontainer">
-                <ImageContainer
-                  src={DateNight}
-                  alt="Cool Date Night"
-                  className={
-                    isMobile
-                      ? "banner-mobile flex-center "
-                      : "banner flex-center "
-                  }
-                  style={{ objectFit: "cover" }}
-                />
-                <div className="middle">
-                  {" "}
-                  <div className="text">
-                    <img
-                      src={Flutter}
-                      alt="Flutter"
-                      style={{ height: "20px", width: "auto" }}
-                    />
-                    Cool Date Night
+              <a href="https://apps.apple.com/in/app/cool-date-night/id1402648300#:~:text=Cool%20Date%20Night%20is%20a,tailored%20to%20your%20relationship%20status.">
+                <div className="hovercontainer">
+                  <ImageContainer
+                    src={DateNight}
+                    alt="Cool Date Night"
+                    className={
+                      isMobile
+                        ? "banner-mobile flex-center "
+                        : "banner flex-center "
+                    }
+                    style={{ objectFit: "cover" }}
+                  />
+                  <div className="middle">
+                    {" "}
+                    <div className="text">
+                      <img
+                        src={Flutter}
+                        alt="Flutter"
+                        style={{ height: "20px", width: "auto" }}
+                      />
+                      Cool Date Night
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              <div className="hovercontainer">
-                <ImageContainer
-                  src={Sociables}
-                  alt="Sociables"
-                  className={
-                    isMobile
-                      ? "banner-mobile flex-center img"
-                      : "banner flex-center img"
-                  }
-                />
-                <div className="middle">
-                  {" "}
-                  <div className="text">
-                    <DiReact style={{ fontSize: "21px" }} /> Sociables
+              </a>
+              <a href="sociables.hazelis.online">
+                <div className="hovercontainer">
+                  <ImageContainer
+                    src={Sociables}
+                    alt="Sociables"
+                    className={
+                      isMobile
+                        ? "banner-mobile flex-center img"
+                        : "banner flex-center img"
+                    }
+                  />
+                  <div className="middle">
+                    {" "}
+                    <div className="text">
+                      <DiReact style={{ fontSize: "21px" }} /> Sociables
+                    </div>
                   </div>
                 </div>
-              </div>
               </a>
               <button className="hovercontainer">
                 <ImageContainer
