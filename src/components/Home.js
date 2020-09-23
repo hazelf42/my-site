@@ -298,7 +298,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-
+              </a>
               <div className="hovercontainer">
                 <ImageContainer
                   src={Sociables}
@@ -316,7 +316,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              </a>
+              
               <button className="hovercontainer">
                 <ImageContainer
                   src={Edibly}

@@ -165,8 +165,8 @@ p {
   object-fit: cover;
 }
 .header-image-blur {
-  filter: blur(20px)
-
+  filter: blur(20px);
+  overflow: hidden
 }
 .header {
   width: 100vw;
@@ -304,6 +304,10 @@ p {
 }
 .smaller {
   height: 75px;
+  position: fixed;
+}
+.medium{
+  height: 200px;
   position: fixed;
 }
 .smaller .remix {
