@@ -166,9 +166,6 @@ function About(props) {
               I use AdobeXd to create UI prototypes of web and mobile apps, so
               you can make sure your app is exactly as beautiful as you pictured
               it, before I write one line of code.
-              {/* Using AdobeXd, I'll create a UI prototype of your app, so that you
-              can make sure your app is exactly as beautiful and intuitive as
-              you'd pictured it, before I write one line of code. */}
             </p>
           </div>
         </Col>
@@ -416,7 +413,12 @@ export default function Home() {
     setOpenContact(!openContact);
     setOpenContact(!openContact);
   };
+    Object.keys(styles).map((style) => {
+    const img = new Image();
 
+    img.src = styles[style].backgroundImage;
+    return img
+    });
   return (
     <Container style={{ maxWidth: "100VW" }}>
       <Header
