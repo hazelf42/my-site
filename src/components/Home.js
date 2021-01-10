@@ -284,10 +284,9 @@ export default function Home() {
                     alt="Cool Date Night"
                     className={
                       isMobile
-                        ? "banner-mobile flex-center "
-                        : "banner flex-center "
+                        ? "banner-mobile flex-center img"
+                        : "banner flex-center img"
                     }
-                    style={{ objectFit: "cover" }}
                   />
                   <div className="middle">
                     {" "}
