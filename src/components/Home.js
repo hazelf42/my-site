@@ -276,6 +276,26 @@ export default function Home() {
               <h3 className="subtitle">Production-Ready Mobile Apps</h3>
             </Col>
             <Col md={9} xs={12}>
+              <a href="https://storycity.com.au/">
+                <div className="hovercontainer">
+                  <ImageContainer
+                    src={require("../assets/storycity.jpg")}
+                    thumb={require("../assets/storycity_thumb.jpg")}
+                    alt="Story City"
+                    className={
+                      isMobile
+                        ? "banner-mobile flex-center img"
+                        : "banner flex-center img"
+                    }
+                  />
+                  <div className="middle">
+                    {" "}
+                    <div className="text">
+                      <DiReact style={{ fontSize: "21px" }} /> Story City
+                    </div>
+                  </div>
+                </div>
+              </a>
               <a href="https://apps.apple.com/in/app/cool-date-night/id1402648300#:~:text=Cool%20Date%20Night%20is%20a,tailored%20to%20your%20relationship%20status.">
                 <div className="hovercontainer">
                   <ImageContainer
@@ -360,33 +380,33 @@ export default function Home() {
     );
   }
   function Gallery() {
-    let imageList = [Tarakwai, Calculator, GraphCalc, Scraper, SOC, SC];
+    let imageList = [Tarakwai, Calculator, SOC, GraphCalc, Scraper, SC];
     let text = [
       "UI/UX and creating funnels for an eco-conscious and community-supporting Tanzanian safari company.",
       "An intuitive, simple calculator designed to show the environmental impact of the way you eat, based on several peer-reviewed sources and meta-analyses.",
+      "Ongoing work pro-bono for Shades of Colour, a QTBIPOC collective in Edmonton, AB.",
       "A robust graphing app designed to allow engineering faculty to share customizable equations with their classes.",
       "An application that can be easily adapted to scrape the menus of any Javascript-based restaurant app, then intelligently filter for vegan and vegetarian dishes.",
-      "Ongoing work pro-bono for Shades of Colour, a QTBIPOC collective in Edmonton, AB.",
-      "Story City: Ongoing UI/UX and front-end programming for a locative storytelling app. Message me for the beta! :)"
+      "Story City: Ongoing UI/UX and front-end programming for a locative storytelling app. Message me for the beta! :)",
     ];
     let urls = [
       "https://www.tarakwaisafaris.com/",
       "http://calculator.hazelis.online",
+      "https://shadesofcoloryeg.wixsite.com/shadesofcolour",
       "https://graphingcalchf.netlify.app/",
       "https://github.com/hazelf42/menu-scraper",
-      "https://shadesofcoloryeg.wixsite.com/shadesofcolour",
       "https://storycity.com.au",
     ];
     let icons = [
       <></>,
       <DiReact style={{ fontSize: "21px" }} />,
+      <></>,
       <DiReact style={{ fontSize: "21px" }} />,
       <DiPython />,
-      <></>,
       <DiReact style={{ fontSize: "21px" }} />,
     ];
     return (
-      <Row>
+      <Row style={{ marginBottom: 10 }}>
         {imageList.map((image) => {
           return (
             <Col md={4} xs={3}>
@@ -400,6 +420,7 @@ export default function Home() {
                       objectFit: "cover",
                       height: "100%",
                       maxWidth: "100%",
+                      marginBottom: 10,
                     }}
                   />
                   <div
